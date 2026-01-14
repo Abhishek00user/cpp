@@ -10,7 +10,7 @@ class myClass{
     myClass(){
         count++;
     }
-    // static function to access static data members
+    //  static member function belongs to the class itself, not to any object, and can access only static data members.
    static void getCount(){
         cout<<"count is :"<<count<<endl;
     }

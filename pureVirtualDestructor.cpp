@@ -12,7 +12,7 @@ public:
     virtual void someFunction() = 0; // Pure virtual function
 };
 
-Base::~Base() {
+Base::~Base() {  // must be defined
     std::cout << "Base destructor\n";
 }
 
@@ -21,7 +21,7 @@ public:
     Derived() {
         std::cout << "Derived constructor\n";
     }
-    ~Derived() override {
+    ~Derived(){
         std::cout << "Derived destructor\n";
     }
     void someFunction() override {

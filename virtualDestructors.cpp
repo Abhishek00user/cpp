@@ -22,8 +22,8 @@ class B:public A{
 };
 int main(){
     // Because p is of type A*, it can only access members of class A.
-A *p=new B;  //the new object of B class will contain both variable b and a and the pointer 
-// will point to them .So it's important to delete both a and b while destroying the object 
+A *p=new B;  //this is a base class pointer pointing to derived cls obj and  the new object of B  will contain both vars
+//  b and a and the pointer  will point to them .So it's important to delete both a and b while destroying the object 
 p->f1();
 delete p; //while deleting this ptr, if we didn't declared the destructor of base class as virtual then 
 // early binding would take place and due to this only base destructor would run and due to not running of derived
@@ -33,3 +33,29 @@ delete p; //while deleting this ptr, if we didn't declared the destructor of bas
 //  destructor of A class will also be called  
 return 0;
 }
+//during early binding the type of pointer will be considered during compile time since pointer is of A type then 
+// only destructor of A class will get called and B's destructor would not be called which will lead to memory leak
+// but during runtime actual object type (B) is detected and derived destr gets called first and then base destr
+// runs ensuring no memory leak
+
+// WITHOUT USING VIRTUAL
+class Base {
+public:
+    ~Base() {
+        cout << "Base destructor\n";
+    }
+};
+
+class Derived : public Base {
+public:
+    int* data;
+
+    Derived() {
+        data = new int(10);  // resource allocated and this will not get deleted due to compile time polymorphism
+    }
+
+    ~Derived() {
+        delete data;        // resource freed
+        cout << "Derived destructor\n";
+    }
+};
