@@ -27,7 +27,7 @@ A *p=new B;  //this is a base class pointer pointing to derived cls obj and  the
 p->f1();
 delete p; //while deleting this ptr, if we didn't declared the destructor of base class as virtual then 
 // early binding would take place and due to this only base destructor would run and due to not running of derived
-// class destructor ,memory leak can occur.Ideally we want both the destructor to be called for handling memory leak
+// class destructor ,memory leak can occur(as b will not get deleted).Ideally we want both the destructor to be called for handling memory leak
 // in order to run both the destructor we want late binding of the destructor. after declaring virtual ,the address
 // of the pointer would be considered. So,destructor of B will be called first after that since it's  inherited so
 //  destructor of A class will also be called  

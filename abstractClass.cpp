@@ -4,7 +4,7 @@ public:
 };
 class Derived : public AbstractBase {
 public:
-    void pureVirtualFunction() override {
+    void pureVirtualFunction() override { //compulsory to define
         // Provide implementation for the pure virtual function
     }
 };

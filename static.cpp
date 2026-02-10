@@ -15,7 +15,7 @@ class myClass{
         cout<<"count is :"<<count<<endl;
     }
 };
-// needs to be declared outside the class also
+// needs to be defined outside the class also
 int myClass::count;  //the memory of this variable doesn't depend on the object that's why
 // it is known as class variable.THis line is crucial for the creation of count var and
 //  memory distribution to count

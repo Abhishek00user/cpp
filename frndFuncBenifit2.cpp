@@ -17,8 +17,8 @@
 // // defining the friend function 
 
 // Complex operator+(Complex X,Complex Y){ //one more argument needed when compared to  overloading using member
-//  function as explained in operatorOverl.cpp because there is no caller object in friend function as friend 
-// function is not a member function due to which we can't access it through caller object
+//  function as explained in operatorOverl.cpp because there is no caller object in friend function because friend 
+// function is not a member function , so we can't access it through caller object
 
 //     Complex temp;
 //     temp.a=X.a+ Y.a;

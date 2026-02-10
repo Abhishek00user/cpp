@@ -1,3 +1,6 @@
+// In C/C++, whenever you take an address, the result is a pointer
+// &X  →  pointer to X  - Address of X” is stored in a pointer to X
+
 #include<iostream>
 using namespace std;
 
@@ -17,12 +20,13 @@ int main(){
     // int *t=&i;
     // cout<<(*t)++<<endl;  //this will give you 3 as it is post increment
     
-    int arr[5]={1,2,3,4};
+    int arr[5]={1,2,3,4,5};
+    cout<<sizeof(&arr); // 4
     cout<<arr<<endl; //address 
     cout<<*arr<<endl;  //1
     cout<<*arr+1<<endl;  //2
     cout<<*(arr+1)<<endl; //2
     cout<<*(arr)+1<<endl;; //2
-    cout<<2[arr]; //3
+    cout<<2[arr]<<endl; //3
 return 0;
 }

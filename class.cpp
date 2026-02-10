@@ -16,7 +16,7 @@ void Complex::set_data(int x,int y){
     a=x; b=y;
 }
 int main(){
-Complex c1;
+Complex c1;//c1 exists from the point it is created until the end of the main() function.
 c1.set_data(4,5);
 c1.showData();
 return 0;
