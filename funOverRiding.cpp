@@ -1,3 +1,8 @@
+// Method overriding happens when derived class provides its own implementation of the function that is already defined in its base class.
+// It is used to achieve runtime polymorphism and virtual function must be used to do it correctly.With `virtual`, the function call is resolved 
+// at **runtime** (late binding), based on the **object type**, not the pointer type. achieved through virtual function and method overriding
+// runtime also known as dynamic polymorphism or late binding
+
 #include<iostream>
 using namespace std;
 class parent{
@@ -31,3 +36,8 @@ ch.f2(4);
 p.f2();
 return 0;
 }
+
+// use of method Overriding:
+// 1-> runtime polymorphism
+// 2-> code flexibility(You can add new derived classes **without modifying existing code**)
+// 3-> abstraction (Base class defines **what to do**, derived class defines **how to do*)

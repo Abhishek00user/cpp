@@ -1,0 +1,65 @@
+## Why late binding needs pointer/reference (step by step)
+
+### 1️⃣ What late binding actually is
+Late binding means:
+- The **function call is resolved at runtime**
+- Based on the **dynamic (actual) object type**
+
+In C++, this is implemented using:
+- **virtual functions**
+- **vtable / vptr**
+- **dynamic dispatch**
+
+---
+
+### 2️⃣ Where dynamic dispatch is triggered
+Dynamic dispatch happens **only when**:
+- A **virtual function** is called  
+- **Through a base-class pointer or reference**
+
+
+
+
+## Difference Between Compile Time and Run Time (Core Concept — Not Polymorphism)
+---
+
+## 🔹 Compile Time — Core Idea
+
+> **Compile time is the phase when the source code is translated into machine code and checked for correctness before the program runs.**
+
+### 🔹 What Happens at Compile Time
+- Syntax checking
+- Type checking
+- Variable/function existence checking
+- Memory layout planning
+- Generation of executable code
+- Early error detection
+
+### 🔹 Errors Found at Compile Time
+- Syntax errors
+- Type mismatch
+- Undeclared variables
+- Missing return statements
+- Function signature mismatches
+
+---
+
+## 🔹 Run Time — Core Idea
+
+> **Run time is the phase when the compiled program is actually executed and instructions are performed by the CPU.**
+
+### 🔹 What Happens at Run Time
+- Memory allocation on heap
+- Object creation
+- Function execution
+- Input/output operations
+- Dynamic decision making
+- Resource usage
+
+### 🔹 Errors Found at Run Time
+- Segmentation fault
+- Division by zero
+- Null pointer access
+- Memory leaks
+- File not found
+- Stack overflow

@@ -1,5 +1,6 @@
 
 // static members and functions
+// non static functions works on objects while static works on class
 
 #include<iostream>
 using namespace std;

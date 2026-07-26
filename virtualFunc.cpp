@@ -29,3 +29,10 @@ int main(){
     base_class_pointer->display();  //just try to run this after removing virtual keyword for more clarity
     return 0;
 }
+
+// 🔹 What Happens Internally? (vtable Concept)
+// - Compiler creates a **vtable (virtual table)** for classes with virtual functions
+// - Each object holds a **vptr** pointing to its class vtable
+// - At runtime:
+//   - `a->sound()` looks into vtable
+//   - Calls correct function implementation

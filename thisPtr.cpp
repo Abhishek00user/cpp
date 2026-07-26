@@ -1,9 +1,35 @@
 #include<iostream> 
 using namespace std; 
 
-/* local variable is same as a member's name */
-// A non-static member function operates on a specific object and has access to instance data members using the implicit this pointer.
-// this pointer is used for accessing object members when there is a local variable with the same name
+//  **`this` is an implicit pointer available inside non-static member functions that holds the address of the current calling object.**
+// In short:
+// > **`this` points to the object that invoked the member function.**
+
+// Non-static member functions use the `this` pointer to know which object’s data to operate on, while static member
+//  functions do not have a `this` pointer because they are not tied to any object.**
+// ---
+
+// ## 🔹 Why Does `this` Exist?
+// Because:
+// - Member functions are **shared among all objects**
+// - Data members are **object-specific**
+// - `this` tells the function **which object’s data to use**
+
+// ---
+
+// ## 🔹 What Exactly Does `this` Store?
+// - The **address of the current object**
+// - Type: `ClassName*`
+
+// ---
+
+// ## 🔹 Where is `this` Available?
+// ✔ Inside **non-static member functions**  
+// ❌ NOT available inside **static member functions**
+
+// Reason:
+// - Static functions do not belong to any object
+
 
 #include <iostream>
 using namespace std;
@@ -13,6 +39,9 @@ class Student {
     static int count;      // static data member
 
 public:
+    Student() {
+        count++;
+    }
     // non-static member function
     void setId(int id) {
         this->id = id;     // this points to the calling object
@@ -25,7 +54,7 @@ public:
     // static member function
     static void showCount() {
         cout << "Count: " << count << endl;
-        // cout << id;     ❌ ERROR: no this pointer here
+        // cout << id;     ❌ ERROR: no this pointer here as a non static member reference must be relative to a specific obj
     }
 };
 

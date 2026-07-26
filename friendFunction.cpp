@@ -1,5 +1,5 @@
 
-// Demonstration for friend function 
+// A friend function is a non-member function that can access private and protected members of a class using the friend keyword 
 
 #include<iostream>
 using namespace std;

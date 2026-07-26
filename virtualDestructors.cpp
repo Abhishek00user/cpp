@@ -1,43 +1,37 @@
-
+//  A **virtual destructor** ensures that when an object is deleted through a **base class pointer**, the **derived class destructor
+//  is called first**, followed by the base class destructor so that memory leak(memory which can't be accessed) don't occur
+//  Memory leak can occur when we create an object and the obj has pointer pointing to a memory ,but we delete that obj without releasing memory
 #include<iostream>
 using namespace std;
 class A{
     int a;
     public:
-    void f1(){
-        cout<<"f1 of A executed"<<endl;
-    };
-    
     virtual ~A(){  //on declaring virtual,all destructors of child classes will also become virtual
         cout<<"Destructor of A class executed";
     }
 };
 class B:public A{
-    int b;
+    int *data;
     public:
-    void f2(){};
+    B(){
+        data  = new int[3];
+    }
     ~B(){  //already virtual
-        cout<<"Destructor of B class executed"<<endl;
+        delete[] data;
     }
 };
 int main(){
     // Because p is of type A*, it can only access members of class A.
-A *p=new B;  //this is a base class pointer pointing to derived cls obj and  the new object of B  will contain both vars
-//  b and a and the pointer  will point to them .So it's important to delete both a and b while destroying the object 
-p->f1();
-delete p; //while deleting this ptr, if we didn't declared the destructor of base class as virtual then 
-// early binding would take place and due to this only base destructor would run and due to not running of derived
-// class destructor ,memory leak can occur(as b will not get deleted).Ideally we want both the destructor to be called for handling memory leak
-// in order to run both the destructor we want late binding of the destructor. after declaring virtual ,the address
-// of the pointer would be considered. So,destructor of B will be called first after that since it's  inherited so
-//  destructor of A class will also be called  
-return 0;
-}
-//during early binding the type of pointer will be considered during compile time since pointer is of A type then 
-// only destructor of A class will get called and B's destructor would not be called which will lead to memory leak
-// but during runtime actual object type (B) is detected and derived destr gets called first and then base destr
-// runs ensuring no memory leak
+    A *p=new B;  // base class pointer pointing to derived cls obj 
 
+    delete p; //while deleting this ptr, if we didn't declared the destructor of base class as virtual then 
+    // early binding would take place and type of pointer would be considered during compile time due to this only base destructor would run and due to this memory leak can
+    //  occur(as array of 3 not freed).Ideally we want both the destructor to be called for handling memory leak
+    // in order to run both the destructor we want late binding of the destructor. after declaring virtual ,the address
+    // of the pointer would be considered. So,destructor of B will be called first after that since it's  inherited so
+    //  destructor of A class will also be called  
+    return 0;
+}
 // WITHOUT USING VIRTUAL
 class Base {
 public:

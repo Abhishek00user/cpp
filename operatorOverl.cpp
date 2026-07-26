@@ -1,3 +1,6 @@
+// Compile-time polymorphism** means that the **function call is resolved at compile time**, not at runtime.  
+// The compiler decides **which function to call** based on the **function signature**.Also called **static polymorphism** or **early binding**.
+// 2 ways to achieve it : function overloading and operator overloading
 #include<iostream>
 using namespace std;
 class Complex{

@@ -1,0 +1,90 @@
+### ✅ **How to Define Polymorphism to an Interviewer (Best Answer)**
+#### 🔹 One-Line (Perfect for Interviews)
+> **Polymorphism is an object-oriented concept where the same function or interface behaves differently depending on the context or 
+the object invoking it.**
+
+---
+
+### 🔹 Slightly Expanded (2–3 Lines)
+> **Polymorphism allows one interface to have multiple implementations. In C++, the same function name can perform different tasks either at 
+compile time using function overloading or at runtime using virtual functions and inheritance.**
+
+
+## 🔹 Encapsulation
+### ✅ Definition
+> **Encapsulation is the mechanism of bundling data and the methods that operate on that data, while restricting direct access to the data.**
+
+### 🔹 Methods to Achieve Encapsulation
+- **Access specifiers** – Control visibility (`private`, `protected`, `public`)
+- **Getter and Setter methods** – Controlled access to private data members
+- **Data hiding** – Prevents direct modification of internal state
+
+---
+
+## 🔹 Abstraction
+
+### ✅ Definition
+> **Abstraction is the concept of hiding implementation details and showing only the essential features to the user.**
+
+### 🔹 Methods to Achieve Abstraction
+- **Abstract classes** – Use of pure virtual functions
+- **Interfaces** – Achieved via abstract base classes in C++
+- **Access specifiers** – Expose only required functionalities
+
+---
+
+## 🔹 Inheritance
+
+### ✅ Definition
+> **Inheritance is a mechanism where a new class acquires the properties and behavior of an existing class.**
+
+### 🔹 Methods to Achieve Inheritance
+- **Single inheritance** – One base class, one derived class
+- **Multiple inheritance** – More than one base class
+- **Multilevel inheritance** – Inheritance chain across levels
+- **Hierarchical inheritance** – Multiple derived classes from one base class
+- **Hybrid inheritance** – Combination of inheritance types
+
+
+
+
+
+## 🔹 Why Do We Need a Pure Virtual Destructor?
+
+### 1️⃣ To Make a Class Abstract
+If a class is meant to act as an **interface-like base class**, a pure virtual destructor prevents instantiation.
+
+✔ Enforces design rule: *base class should not be instantiated*
+
+---
+
+### 2️⃣ To Ensure Proper Cleanup via Base Pointer
+Objects are often deleted like this:
+
+```cpp
+Base* p = new Derived();
+delete p;
+```
+
+Without a virtual destructor → **memory leak**
+
+A **pure virtual destructor** guarantees:
+- Derived destructor is called
+- Then base destructor is called
+
+---
+
+### 3️⃣ Base Class Still Needs Cleanup
+Even abstract classes may:
+- Own resources
+- Have base subobjects
+
+➡ Base destructor must still run
+That’s why a **definition is mandatory**.
+
+
+## 🔹 Why Pure Virtual Destructor Must Be Defined?
+> **Destruction always reaches the base class, even if it is abstract.**
+If not defined → **linker error**
+
+---
